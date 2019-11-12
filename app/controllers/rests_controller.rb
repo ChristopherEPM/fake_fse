@@ -109,7 +109,8 @@ class RestsController < ApplicationController
       @usecases3 = Usecase.new(what: "03", how: [{key: "HOWDATAUSER", value: "01"}])
       #añadir usecases
       @rest = Rest.new(user:"2310",role: "FEASTCOTAPP", app: "8820", usecases:[@usecases1,@usecases2,@usecases3])
-      #render json: @rest, status: :ok
+      
+      #render json: @rest.errors
   end
 
   def useraccess
