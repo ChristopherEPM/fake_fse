@@ -9,7 +9,7 @@ class Rest < ApplicationRecord
   validate :rest_validator
 
   def rest_validator
-    #errors.add(:base,"Error, El usuario no es supervacas, así que no mola") if self.user != "admin"
+    #errors.add(:base,"Error, El usuario no es supervacas, así que no mola") if self.user == "admin"
   end
 
 end

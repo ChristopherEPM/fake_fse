@@ -1,6 +1,6 @@
 class Usecase < ApplicationRecord
-  has_many :hows
-  belongs_to :rest
+  has_and_belongs_to_many :hows
+
   def as_json(options={})
   	result = super.except({ :except => [:created_at, :updated_at] }.merge(options))
   	result

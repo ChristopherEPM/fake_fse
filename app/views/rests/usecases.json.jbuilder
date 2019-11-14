@@ -10,4 +10,5 @@ json.rest do
 			json.value how.value
 		end
 	end
+	json.errors @rest.errors.full_messages
 end

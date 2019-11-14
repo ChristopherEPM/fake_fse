@@ -1,3 +1,3 @@
 class How < ApplicationRecord
-	belongs_to :usecase
+	has_and_belongs_to_many :usecases
 end
