@@ -35,4 +35,4 @@ en:
     errors:
         models:
             rest:
-              format: "%{message}"
+              format: "%{attribute} %{message}"

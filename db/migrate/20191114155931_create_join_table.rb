@@ -6,3 +6,4 @@ class CreateJoinTable < ActiveRecord::Migration[5.1]
     end
   end
 end
+

@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**Run the initial migration:** `rake db:migrate`
+**Populate the database:** `rake db:seed`
+**Start the local server:** `rails s` 
+Now we can do post petitions  to our endpoint  `http://localhost:3000/rests/usecases`
+The params to use in the post are  **role**, **app** and **user**.
+We will get a json response with the data (if valid) or with the errors 

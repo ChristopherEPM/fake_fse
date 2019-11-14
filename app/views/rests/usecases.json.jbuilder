@@ -1,4 +1,4 @@
-json.rest do 
+
 	json.app @rest.app
 	json.role @rest.role
 	json.user @rest.user
@@ -10,5 +10,12 @@ json.rest do
 			json.value how.value
 		end
 	end
-	json.errors @rest.errors.full_messages
-end
+	json.errors @rest.errors.to_hash.values do |errors|
+
+    errors.each do |error|
+			json.errorcode error[:code]
+      json.error error[:message]
+		end
+		
+	end  if @rest.errors.to_hash.values != []
+

@@ -103,17 +103,16 @@ class RestsController < ApplicationController
     #     error: error    
     #   }
     # end
-    @rest_val = Rest.new(app: params[:app], role: params[:role], user: params[:user])
-    @rest_val.validate
-    @rest = Rest.where(user:"admin",role: "FEASTCOTAPP", app: "8820").first_or_create
-    @usecases1 = Usecase.where(what: "01",rest_id: @rest.id).first_or_create
-    @usecases2 = Usecase.where(what: "04",rest_id: @rest.id).first_or_create
-    @usecases3 = Usecase.where(what: "03",rest_id: @rest.id).first_or_create
-    @how1 = How.where(key:"HOWDATAUSER", value: "01", usecase_id: @usecases1.id).first_or_create
-    @how2 = How.where(key:"HOWDATAUSER", value: "02", usecase_id: @usecases2.id).first_or_create
-    @how3 = How.where(key:"HOWDATAUSER", value: "03", usecase_id: @usecases3.id).first_or_create
-    
-
+    @rest = Rest.new(app: params[:app], role: params[:role], user: params[:user])
+    @rest.validate
+    if @rest.valid?
+      @rest = Rest.where(user: params[:user],role: params[:role], app: params[:app]).first
+      @rest.validate
+    else
+      respond_to do |format|
+        format.json { render template: "rests/usecases", status: 500 }
+      end
+    end
       
       # if !@rest_val.valid?
       #   render json: @rest_val.errors, status: 500
